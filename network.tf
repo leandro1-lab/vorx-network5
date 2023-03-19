@@ -21,7 +21,8 @@ resource "aws_subnet" "vorx-subnet-pub-1a" {
 
 resource "aws_subnet" "vorx-subnet-priv-1a" {
   vpc_id     = aws_vpc.vorx-vpc-prod.id
-  cidr_block = "10.0.10.0/24"
+  
+cidr_block = "10.0.10.0/24"
   availability_zone = "us-east-1a"
 
   tags = {
@@ -29,6 +30,34 @@ resource "aws_subnet" "vorx-subnet-priv-1a" {
   }
 }
 
+
+resource "aws_subnet" "vorx-subnet-priv-16" {
+  vpc_id     = aws_vpc.vorx-vpc-prod.id
+  cidr_block = "10.0.2.0/24"
+  availability_zone = "us-east-1b"
+
+
+
+ tags = {
+    Name = "Private-Subnet-1b"
+  }
+}
+
+
+
+
+
+
+resource "aws_subnet" "vorx-subnet-pub-16" {
+  vpc_id     = aws_vpc.vorx-vpc-prod.id
+  cidr_block = "10.0.20.0/24"
+  availability_zone = "us-east-1b"
+
+
+ tags = {
+    Name = "Publica-Subnet-1b"
+  }
+}
 
 
 
