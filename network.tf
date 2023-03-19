@@ -69,6 +69,21 @@ resource "aws_internet_gateway" "gw" {
 }
 
 
+resource "aws_route_table" "publi-RT" {
+  vpc_id = aws_vpc.vorx-vpc-prod.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.gw.id
+  }
+
+tags = {
+    Name = "prod-public-rt"
+  }
+}
+
+
+
 
 
 
