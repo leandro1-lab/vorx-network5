@@ -31,9 +31,9 @@ cidr_block = "10.0.10.0/24"
 }
 
 
-resource "aws_subnet" "vorx-subnet-priv-16" {
+resource "aws_subnet" "vorx-subnet-priv-1b" {
   vpc_id     = aws_vpc.vorx-vpc-prod.id
-  cidr_block = "10.0.2.0/24"
+  cidr_block = "10.0.3.0/24"
   availability_zone = "us-east-1b"
 
 
@@ -48,9 +48,9 @@ resource "aws_subnet" "vorx-subnet-priv-16" {
 
 
 
-resource "aws_subnet" "vorx-subnet-pub-16" {
+resource "aws_subnet" "vorx-subnet-pub-1b" {
   vpc_id     = aws_vpc.vorx-vpc-prod.id
-  cidr_block = "10.0.20.0/24"
+  cidr_block = "10.0.30.0/24"
   availability_zone = "us-east-1b"
 
 
@@ -69,7 +69,7 @@ resource "aws_internet_gateway" "gw" {
 }
 
 
-resource "aws_route_table" "publi-RT" {
+resource "aws_route_table" "public-rt" {
   vpc_id = aws_vpc.vorx-vpc-prod.id
 
   route {
@@ -81,6 +81,21 @@ tags = {
     Name = "prod-public-rt"
   }
 }
+
+resource "aws_route_table_association" "pub-rt-1a-associate" {
+  subnet_id      = aws_subnet.vorx-subnet-pub-1a.id
+  route_table_id = aws_route_table.public-rt.id
+}
+
+
+resource "aws_route_table_association" "pub-rt-1b-associate" {
+  subnet_id      = aws_subnet.vorx-subnet-pub-1b.id
+  route_table_id = aws_route_table.public-rt.id
+
+}
+
+
+
 
 
 
