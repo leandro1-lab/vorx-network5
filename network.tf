@@ -3,7 +3,7 @@ resource "aws_vpc" "vorx-vpc-prod" {
   
 
   tags = {
-    Name = "VORX-PROD"
+    Name = "VORX-PRODUCAO"
   }
 }
 
